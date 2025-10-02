@@ -4,7 +4,5 @@ export type Rocket = {
 }
 
 export type LaunchRocketSystem = {
-    password: string
-    rocket: Rocket
-    launch: () => void
+    launch: (rocket: Rocket, password: string) => void
 }

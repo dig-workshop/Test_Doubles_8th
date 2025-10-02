@@ -11,27 +11,23 @@ import SpyRocket from './SpyRocket'
 describe('ロケット発射システム（LaunchRocketImpl）のテスト', () => {
 
     describe('リファクタ前', () => {
-        it('正しいpasswordが設定されている場合、ロケットを発射して自爆はしないこと', () => {
+        it('正しいpasswordが設定されている場合、ロケットが発射されて、中止されない', () => {
             const spyRocket = new SpyRocket()
-            const correctPassword = 'black300'
-            const launchRocket = new LaunchRocketImpl(spyRocket, correctPassword)
+            const validPassword = 'black300'
+            const launchRocket = new LaunchRocketImpl()
 
-
-            launchRocket.launch()
-
+            launchRocket.launch(spyRocket, validPassword)
 
             expect(spyRocket.fire_wasCalled).toBeTruthy()
             expect(spyRocket.disable_wasCalled).not.toBeTruthy()
         })
 
-        it('不正なpasswordが設定されている場合、ロケットを発射せず自爆すること', () => {
+        it('不正なpasswordが設定されている場合、ロケットが発射さず、中止される', () => {
             const spyRocket = new SpyRocket()
             const invalidPassword = 'white200'
-            const launchRocket = new LaunchRocketImpl(spyRocket, invalidPassword)
+            const launchRocket = new LaunchRocketImpl()
 
-
-            launchRocket.launch()
-
+            launchRocket.launch(spyRocket, invalidPassword)
 
             expect(spyRocket.fire_wasCalled).not.toBeTruthy()
             expect(spyRocket.disable_wasCalled).toBeTruthy()
@@ -39,26 +35,22 @@ describe('ロケット発射システム（LaunchRocketImpl）のテスト', () 
     })
 
     describe('リファクタ後', () => {
-        it('正しいpasswordが設定されている場合、ロケットを発射して自爆はしないこと', () => {
+        it('正しいpasswordが設定されている場合、ロケットが発射されて、中止されない', () => {
             const mockRocket = new MockRocket()
-            const correctPassword = 'black300'
-            const launchRocket = new LaunchRocketImpl(mockRocket, correctPassword)
+            const validPassword = 'black300'
+            const launchRocket = new LaunchRocketImpl()
 
-
-            launchRocket.launch()
-
+            launchRocket.launch(mockRocket, validPassword)
 
             mockRocket.verifyFire()
         })
 
-        it('不正なpasswordが設定されている場合、ロケットを発射せず自爆すること', () => {
+        it('不正なpasswordが設定されている場合、ロケットが発射さず、中止される', () => {
             const mockRocket = new MockRocket()
             const invalidPassword = 'white200'
-            const launchRocket = new LaunchRocketImpl(mockRocket, invalidPassword)
+            const launchRocket = new LaunchRocketImpl()
 
-
-            launchRocket.launch()
-
+            launchRocket.launch(mockRocket, invalidPassword)
 
             mockRocket.verifyDisable()
         })

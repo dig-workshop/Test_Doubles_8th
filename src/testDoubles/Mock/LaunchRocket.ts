@@ -1,15 +1,13 @@
 import {LaunchRocketSystem, Rocket} from "./Types";
 
 export class LaunchRocketImpl implements LaunchRocketSystem {
-    rocket: Rocket
-    password: string
 
-    constructor(rocket: Rocket, password: string) {
-        this.rocket = rocket
-        this.password = password
-    }
-
-    launch() {
+    launch(rocket: Rocket, password: string):void {
         // テストが通るように実装してください
+        if (password === 'black300') {
+            rocket.fire()
+        } else {
+            rocket.disable()
+        }
     }
 }
