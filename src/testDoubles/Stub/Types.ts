@@ -10,5 +10,6 @@ export type WeatherRepository = {
 
 export type LaunchRocketSystem = {
     weatherRepository: WeatherRepository
-    launch: () => Promise<string>
+    city: string
+    launch: () => Promise<boolean>
 }
