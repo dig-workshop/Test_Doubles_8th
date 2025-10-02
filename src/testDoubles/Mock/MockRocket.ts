@@ -1,7 +1,7 @@
-import {Missile} from "./Types";
+import {Rocket} from "./Types";
 
 // Mockの役割を果たすように書き換えてください
-export class MockMissile implements Missile {
+export class MockRocket implements Rocket {
     private fire_wasCalled = false
     fire(): void {
     }

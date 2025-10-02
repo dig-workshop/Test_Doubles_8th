@@ -1,7 +1,6 @@
 import {LaunchRocketSystem, Rocket} from './Types'
 
 export class LaunchRocketImpl implements LaunchRocketSystem {
-    // ここにコードを記述して下さい
     rocket: Rocket
     password: string
 
@@ -11,9 +10,6 @@ export class LaunchRocketImpl implements LaunchRocketSystem {
     }
 
     launch() {
-        // ここにコードを記述して下さい
-        if (this.password === 'black300') {
-            this.rocket.fire()
-        }
+        // テストが通るように実装してください
     }
 }

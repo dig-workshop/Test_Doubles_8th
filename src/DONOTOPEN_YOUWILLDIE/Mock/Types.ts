@@ -1,10 +1,10 @@
-export type Missile = {
+export type Rocket = {
     fire: () => void
     disable: () => void
 }
 
-export type LaunchMissileSystem = {
+export type LaunchRocketSystem = {
     password: string
-    missile: Missile
+    rocket: Rocket
     launch: () => void
 }

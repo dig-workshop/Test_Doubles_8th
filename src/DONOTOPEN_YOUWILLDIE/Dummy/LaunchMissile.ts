@@ -1,15 +1,15 @@
-import {LaunchMissileSystem, Missile} from './Types'
+import {LaunchRocketSystem, Rocket} from './Types'
 
-export class LaunchMissileImpl implements LaunchMissileSystem {
+export class LaunchRocketImpl implements LaunchRocketSystem {
     password: string
-    missile: Missile
+    rocket: Rocket
 
-    constructor(missile: Missile, password: string) {
-        this.missile = missile
+    constructor(rocket: Rocket, password: string) {
+        this.rocket = rocket
         this.password = password
     }
 
     launch() {
-        this.missile.fire()
+        this.rocket.fire()
     }
 }

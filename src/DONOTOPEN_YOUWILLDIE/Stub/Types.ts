@@ -8,7 +8,7 @@ export type WeatherRepository = {
     getByCity: (city: string) => Promise<Weather>
 }
 
-export type LaunchMissileSystem = {
+export type LaunchRocketSystem = {
     weatherRepository: WeatherRepository
     launch: () => Promise<string>
 }

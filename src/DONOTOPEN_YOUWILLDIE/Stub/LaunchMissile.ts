@@ -1,7 +1,7 @@
-import {LaunchMissileSystem, Weather, WeatherRepository} from './Types'
+import {LaunchRocketSystem, Weather, WeatherRepository} from './Types'
 
 
-export class LaunchMissileImpl implements LaunchMissileSystem {
+export class LaunchRocketImpl implements LaunchRocketSystem {
     weatherRepository: WeatherRepository
 
     constructor(weatherRepository: WeatherRepository) {
@@ -12,7 +12,7 @@ export class LaunchMissileImpl implements LaunchMissileSystem {
         // ここにコードを記述して下さい
         const weather = await this.weatherRepository.getByCity("Nagoya")
         if (weather === Weather.SUNNY) {
-            return "ミサイルを発射しました"
+            return "ロケットを発射しました"
         }
         return "自爆しました"
     }

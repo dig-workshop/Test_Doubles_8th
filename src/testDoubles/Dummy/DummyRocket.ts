@@ -1,7 +1,7 @@
-import {Missile} from "./Types";
+import {Rocket} from "./Types";
 
 // Dummyの役割を果たすように書き換えてください
-export class DummyMissile implements Missile {
+export class DummyRocket implements Rocket {
     fire() {
     }
 }

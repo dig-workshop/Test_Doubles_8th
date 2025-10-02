@@ -1,6 +1,6 @@
-import {Missile} from "./Types";
+import {Rocket} from "./Types";
 
-export class SpyMissile implements Missile {
+export class SpyRocket implements Rocket {
     // ここにコードを記述して下さい
     fire_wasCalled = false
     fire() {

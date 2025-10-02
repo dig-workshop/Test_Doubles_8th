@@ -1,7 +1,7 @@
-import {Missile} from './Types'
+import {Rocket} from './Types'
 
 // Spyの役割を果たすように書き換えてください
-export default class SpyMissile implements Missile {
+export default class SpyRocket implements Rocket {
     fire_wasCalled = false
     fire(): void {
     }

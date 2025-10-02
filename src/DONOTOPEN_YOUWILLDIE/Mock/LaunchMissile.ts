@@ -1,20 +1,20 @@
-import {LaunchMissileSystem, Missile} from "./Types";
+import {LaunchRocketSystem, Rocket} from "./Types";
 
-export class LaunchMissileImpl implements LaunchMissileSystem {
-    missile: Missile
+export class LaunchRocketImpl implements LaunchRocketSystem {
+    rocket: Rocket
     password: string
 
-    constructor(missile: Missile, password: string) {
-        this.missile = missile
+    constructor(rocket: Rocket, password: string) {
+        this.rocket = rocket
         this.password = password
     }
 
     launch() {
         // ここにコードを記述して下さい
         if (this.password === 'black300') {
-            this.missile.fire()
+            this.rocket.fire()
         } else {
-            this.missile.disable()
+            this.rocket.disable()
         }
     }
 }

@@ -1,10 +1,10 @@
-export type Missile = {
+export type Rocket = {
     fire: () => Promise<string>
     selfDestruction: () => string
 }
 
-export type RealLaunchMissileSystem = {
+export type RealLaunchRocketSystem = {
     password: string
-    missile: Missile
+    rocket: Rocket
     launch: () => Promise<string> | string
 }

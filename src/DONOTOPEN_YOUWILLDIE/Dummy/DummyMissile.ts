@@ -1,7 +1,7 @@
-import {Missile} from "./Types";
+import {Rocket} from "./Types";
 
-export class DummyMissile implements Missile {
+export class DummyRocket implements Rocket {
     fire() {
-        throw new Error("これはダミーミサイルです")
+        throw new Error("これはダミーロケットです")
     }
 }

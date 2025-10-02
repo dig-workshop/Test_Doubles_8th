@@ -1,43 +1,43 @@
 import React from 'react';
 import './App.css';
-import {RealMissile} from "./RealMissile";
-import {LaunchMissileImpl} from "./RealLaunchMissile";
+import {RealRocket} from "./RealRocket";
+import {LaunchRocketImpl} from "./RealLaunchRocket";
 
 function App() {
     async function launchButtonClick() {
-        // 本物のミサイルの準備
-        const realMissile = new RealMissile()
+        // 本物のロケットの準備
+        const realRocket = new RealRocket()
 
-        // ミサイルを発射装置にセット
+        // ロケットを発射装置にセット
         const inputElement = document.getElementById("input") as HTMLInputElement
         const password = inputElement.value
-        const launchMissile = new LaunchMissileImpl(realMissile, password)
-        const launchResult = await launchMissile.launch()
+        const launchRocket = new LaunchRocketImpl(realRocket, password)
+        const launchResult = await launchRocket.launch()
 
-        // ミサイルが発射されたら発射ムービー
-        if (launchResult === "ミサイルを発射しました") {
-            const missileVideo = document.getElementById("missileR18") as HTMLIFrameElement
-            // const missileVideo = document.getElementById("missileR6") as HTMLIFrameElement
-            missileVideo.src += '?autoplay=1';
-            missileVideo.hidden = false
+        // ロケットが発射されたら発射ムービー
+        if (launchResult === "ロケットを発射しました") {
+            const rocketVideo = document.getElementById("rocketR18") as HTMLIFrameElement
+            // const rocketVideo = document.getElementById("rocketR6") as HTMLIFrameElement
+            rocketVideo.src += '?autoplay=1';
+            rocketVideo.hidden = false
             const buttonElement = document.getElementById("button") as HTMLAnchorElement
             buttonElement.style.display = "none"
             const textElement = document.getElementById("buttonText") as HTMLButtonElement
             textElement.style.display = "none"
             inputElement.style.display = "none"
-        } else if (launchResult === "ミサイルを発射できません") {
-            const missileVideo = document.getElementById("missileR6") as HTMLIFrameElement
-            missileVideo.src += '?autoplay=1';
-            missileVideo.hidden = false
+        } else if (launchResult === "ロケットを発射できません") {
+            const rocketVideo = document.getElementById("rocketR6") as HTMLIFrameElement
+            rocketVideo.src += '?autoplay=1';
+            rocketVideo.hidden = false
             const buttonElement = document.getElementById("button") as HTMLAnchorElement
             buttonElement.style.display = "none"
             const textElement = document.getElementById("buttonText") as HTMLButtonElement
             textElement.style.display = "none"
             inputElement.style.display = "none"
         } else {
-            const missileVideo = document.getElementById("destructionR12") as HTMLIFrameElement
-            missileVideo.src += '?autoplay=1';
-            missileVideo.hidden = false
+            const rocketVideo = document.getElementById("destructionR12") as HTMLIFrameElement
+            rocketVideo.src += '?autoplay=1';
+            rocketVideo.hidden = false
             const buttonElement = document.getElementById("button") as HTMLAnchorElement
             buttonElement.style.display = "none"
             const textElement = document.getElementById("buttonText") as HTMLButtonElement
@@ -49,7 +49,7 @@ function App() {
     return (
         <div className="app">
             <iframe className="iframe"
-                    id="missileR18"
+                    id="rocketR18"
                     width="560"
                     height="315"
                     src="https://www.youtube.com/embed/dBj3l7lXd7w"
@@ -69,7 +69,7 @@ function App() {
                     hidden={true}>
             </iframe>
             <iframe className="iframe"
-                    id="missileR6"
+                    id="rocketR6"
                     width="560"
                     height="315"
                     src="https://www.youtube.com/embed/KGCEHeyX5zo"

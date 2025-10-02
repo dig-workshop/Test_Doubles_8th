@@ -1,6 +1,6 @@
-import {Missile} from "./Types";
+import {Rocket} from "./Types";
 
-export class RealMissile implements Missile {
+export class RealRocket implements Rocket {
     password = ""
 
     async fire() {
@@ -14,9 +14,9 @@ export class RealMissile implements Missile {
 
         // パスワードと天気によって発射するかしないかを決める
         if (nowWeather !== "雨") {
-            return "ミサイルを発射しました"
+            return "ロケットを発射しました"
         } else {
-            return "ミサイルを発射できません"
+            return "ロケットを発射できません"
         }
 
     }

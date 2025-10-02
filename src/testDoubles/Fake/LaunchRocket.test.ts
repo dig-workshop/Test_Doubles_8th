@@ -1,5 +1,5 @@
-import {SpyMissile} from './SpyMissile'
-import {LaunchMissileImpl} from './LaunchMissile'
+import {SpyRocket} from './SpyRocket'
+import {LaunchRocketImpl} from './LaunchRocket'
 import FakeAuthServer from './FakeAuthServer'
 
 // 単純にパスワードが正しいかだけでなく、認証サーバーでのログインが必要になった場合について考えてみましょう
@@ -29,26 +29,26 @@ describe('認証サーバーのFakeのテスト', () => {
     })
 })
 
-describe('LaunchMissileImplのテスト', () => {
-    it('launchBy()にログイン済みのユーザーIDを渡した場合、ミサイルが発射される', async () => {
+describe('LaunchRocketImplのテスト', () => {
+    it('launchBy()にログイン済みのユーザーIDを渡した場合、ロケットが発射される', async () => {
         const fakeAuthServer = new FakeAuthServer()
-        const spyMissile = new SpyMissile()
-        const launchMissile = new LaunchMissileImpl(spyMissile, fakeAuthServer)
-        launchMissile.login("user1")
+        const spyRocket = new SpyRocket()
+        const launchRocket = new LaunchRocketImpl(spyRocket, fakeAuthServer)
+        launchRocket.login("user1")
 
-        await launchMissile.launchBy("user1")
+        await launchRocket.launchBy("user1")
 
-        expect(spyMissile.fire_wasCalled).toBeTruthy()
+        expect(spyRocket.fire_wasCalled).toBeTruthy()
     })
 
-    it('launchBy()にログイン済みでないユーザーIDを渡した場合、ミサイルが発射されない', async () => {
+    it('launchBy()にログイン済みでないユーザーIDを渡した場合、ロケットが発射されない', async () => {
         const fakeAuthServer = new FakeAuthServer()
-        const spyMissile = new SpyMissile()
-        const launchMissile = new LaunchMissileImpl(spyMissile, fakeAuthServer)
-        launchMissile.login("user1")
+        const spyRocket = new SpyRocket()
+        const launchRocket = new LaunchRocketImpl(spyRocket, fakeAuthServer)
+        launchRocket.login("user1")
 
-        await launchMissile.launchBy("user not authorized")
+        await launchRocket.launchBy("user not authorized")
 
-        expect(spyMissile.fire_wasCalled).not.toBeTruthy()
+        expect(spyRocket.fire_wasCalled).not.toBeTruthy()
     })
 })
