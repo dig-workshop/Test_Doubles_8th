@@ -10,6 +10,11 @@ export class LaunchRocketImpl implements LaunchRocketSystem {
     }
 
     launch() {
-        // テストが通るように実装してください
+        // テストが通るように、パスワードが正しい場合のみロケットに着火する仕様で実装してください
+            this.rocket.fire()
+        // ⭐️Answer:
+        // if(this.password === 'correctPassword') {
+        //     this.rocket.fire()
+        // }
     }
 }

@@ -12,7 +12,7 @@
 機能を一つずつ確実に仕様確認（テスト）ができる。
 
 Test Doubles を用いてロケット発射システムのコードを書くことで、  
-dummy, stub, spy, mock, fake それぞれの役割について理解していこう！
+stub, dummy, spy, mock, fake それぞれの役割について理解していこう！
 
 
 ---
