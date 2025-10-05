@@ -1,15 +1,13 @@
-import {LaunchRocketSystem, Rocket} from './Types'
+import {LaunchRocketSystem, Auth, Rocket} from './Types'
 
 export class LaunchRocketImpl implements LaunchRocketSystem {
-    rocket: Rocket
-    password: string
 
-    constructor(rocket: Rocket, password: string) {
-        this.rocket = rocket
-        this.password = password
-    }
-
-    launch() {
+    launch(rocket: Rocket, auth: Auth) {
         //テストが通るように実装してください
+        rocket.fire()
+        // ⭐️Answer:
+        // if (auth.authenticate("username", "password")) {
+        //     rocket.fire()
+        // }
     }
 }

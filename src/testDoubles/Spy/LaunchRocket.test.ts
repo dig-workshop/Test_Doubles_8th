@@ -1,33 +1,36 @@
 import {SpyRocket} from './SpyRocket'
 import {LaunchRocketImpl} from './LaunchRocket'
+import {StubFailureAuth, StubSuccessAuth} from "./StubAuth";
 
 // Dummyでは、ロケットが発射されていないことのテストしかできませんでした。
-// では正しく発射されるかどうかをテストするにはどうしたらよいでしょうか？
-// Spy（呼ばれたか・呼ばれていないか・どのように呼ばれたかを記録するもの）を使いましょう。
+// 今度は、認証状態に応じてロケットが 発射されること/されないこと をどちらもテストで確認したいです。
+// Spy（今回の場合、着火ロジックが呼ばれたか・呼ばれていないか を記録するもの）を使ってテストしてみましょう。
 
 describe('ロケット発射システム（LaunchRocketImpl）のテスト', () => {
 
+    // まずはこのテストが通るように、SpyRocketを実装してみましょう。
     it('正しいパスワードの場合、spyRocket.fire(）が呼ばれていること', () => {
+        const launchRocket = new LaunchRocketImpl()
         const spyRocket = new SpyRocket()
-        const correctPassword = 'black300'
-        const launchRocket = new LaunchRocketImpl(spyRocket, correctPassword)
+        const stubSuccessAuth = new StubSuccessAuth()
 
 
-        launchRocket.launch()
+        launchRocket.launch(spyRocket, stubSuccessAuth)
 
 
         expect(spyRocket.fire_wasCalled).toBeTruthy()
     })
 
+    // 次に、このテストが通るように、LaunchRocket を修正してください。
     it('間違ったパスワードの場合、spyRocket.fire(）が呼ばれないこと', () => {
+        const launchRocket = new LaunchRocketImpl()
         const spyRocket = new SpyRocket()
-        const invalidPassword = 'white200'
-        const launchRocket = new LaunchRocketImpl(spyRocket, invalidPassword)
+        const stubFailureAuth = new StubFailureAuth()
 
 
-        launchRocket.launch()
+        launchRocket.launch(spyRocket, stubFailureAuth)
 
 
-        expect(spyRocket.fire_wasCalled).not.toBeTruthy()
+        expect(spyRocket.fire_wasCalled).toBeFalsy()
     })
 })

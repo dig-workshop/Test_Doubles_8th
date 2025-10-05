@@ -3,7 +3,10 @@ export type Rocket = {
 }
 
 export type LaunchRocketSystem = {
-    password: string
-    rocket: Rocket
-    launch: () => void
+    launch: (rocket: Rocket, auth: Auth) => void
+}
+
+export type Auth = {
+    // ※この username と password の値は何であってもspyでの実装・テストには関係しませんので、明記しておきます。
+    authenticate: (username: string, password: string) => boolean
 }
