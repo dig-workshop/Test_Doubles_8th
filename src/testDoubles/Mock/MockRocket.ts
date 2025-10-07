@@ -15,6 +15,9 @@ export class MockRocket implements Rocket {
 
     verifyFire() {
         // ここにコードを記述して下さい
+        // ⭐️ヒントで下記どちらかを入れた状態で公開する
+        //expect(this.fire_wasCalled).toBeTruthy()
+        //expect(false).toBeTruthy()
         expect(this.fire_wasCalled).toBeTruthy()
         expect(this.disable_wasCalled).not.toBeTruthy()
     }

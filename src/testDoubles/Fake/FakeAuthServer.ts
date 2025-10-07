@@ -9,12 +9,13 @@ export default class FakeAuthServer implements AuthServer {
         isLogin: false
     }]
 
-    login(userId: string, password: string): void {
+    login(userId: string, password: string): boolean {
         const user = this.users.find(u => u.userId === userId && u.password === password)
         if (user) {
             user.isLogin = true
+            return true
         } else {
-            throw new Error("Invalid credentials")
+            return false
         }
     }
 

@@ -17,7 +17,7 @@ export type User = {
 }
 
 export type AuthServer = {
-    login: (userId: string, password: string) => void
+    login: (userId: string, password: string) => boolean
     getUser: (userId: string | undefined) => Promise<User | undefined>
 }
 

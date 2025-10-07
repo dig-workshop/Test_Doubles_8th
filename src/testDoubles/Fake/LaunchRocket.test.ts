@@ -17,9 +17,8 @@ describe('Fakeのテスト' , () => {
             const userId = "unKnownUser"
             const invalidPassword = "unKnownPassword"
 
-            expect(() => {
-                fakeAuthServer.login(userId, invalidPassword)
-            }).toThrow("Invalid credentials")
+            expect(fakeAuthServer.login(userId, invalidPassword)).toBeFalsy()
+
         })
 
         it('登録ユーザーが間違ったパスワードでログインした場合、エラーを返す', async () => {
@@ -27,9 +26,7 @@ describe('Fakeのテスト' , () => {
             const userId = "taro"
             const invalidPassword = "unKnownPassword"
 
-            expect(() => {
-                fakeAuthServer.login(userId, invalidPassword)
-            }).toThrow("Invalid credentials")
+            expect(fakeAuthServer.login(userId, invalidPassword)).toBeFalsy()
         })
 
         it('登録ユーザーが正しいパスワードでログインした場合、ユーザー情報を返す', async () => {
@@ -74,17 +71,8 @@ describe('Fakeのテスト' , () => {
             const userId = "taro"
             const invalidPassword = "unKnownPassword"
 
-            try {
-                await launchRocket.login(userId,invalidPassword)
-            } catch (e) {
-                // エラーをキャッチして無視する
-            }
-
-            try {
-                await launchRocket.launch(spyRocket)
-            } catch (e) {
-                // エラーをキャッチして無視する
-            }
+            await launchRocket.login(userId,invalidPassword)
+            await launchRocket.launch(spyRocket)
 
             expect(spyRocket.fire_wasCalled).not.toBeTruthy()
         })
@@ -95,11 +83,7 @@ describe('Fakeのテスト' , () => {
             const spyRocket = new SpyRocket()
             const launchRocket = new LaunchRocketImpl(fakeAuthServer)
 
-            try {
-                await launchRocket.launch(spyRocket)
-            } catch (e) {
-                // エラーをキャッチして無視する
-            }
+            await launchRocket.launch(spyRocket)
 
             expect(spyRocket.fire_wasCalled).not.toBeTruthy()
         })
@@ -111,17 +95,8 @@ describe('Fakeのテスト' , () => {
             const userId = "unKnownUser"
             const invalidPassword = "unKnownPassword"
 
-            try {
-                await launchRocket.login(userId,invalidPassword)
-            } catch (e) {
-                // エラーをキャッチして無視する
-            }
-
-            try {
-                await launchRocket.launch(spyRocket)
-            } catch (e) {
-                // エラーをキャッチして無視する
-            }
+            await launchRocket.login(userId,invalidPassword)
+            await launchRocket.launch(spyRocket)
 
             expect(spyRocket.fire_wasCalled).not.toBeTruthy()
         })
