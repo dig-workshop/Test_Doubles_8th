@@ -1,5 +1,5 @@
 import {LaunchRocketImpl} from './LaunchRocket'
-import {StubSunnyWeatherRepository} from "./StubWeatherRepository";
+import {StubRainyWeatherRepository, StubSunnyWeatherRepository} from "./StubWeatherRepository";
 
 // LaunchRocketは天気APIに依存しており、その返り値によって挙動が変わります。
 // このままでは本物のAPIを叩いてしまうので、レスポンスの時間がかかる＋安定したテストができません。
@@ -18,12 +18,11 @@ describe('LaunchRocketImpl（ロケット発射装置）のテスト', () => {
         expect(result).toBeTruthy()
     })
 
-    // 下のテストは誤ったスタブをしています。
-    // 「晴れ以外」の時のテストをするために、WeatherRepositoryにスタブを追加して、正しいテストに修正してください。
+    // 「雨」の時のテストをするために、WeatherRepositoryにスタブを追加して、正しいテストに修正してください。
     // 正しいテストができたら、通るように実装を修正してください。
-    it('天気が「晴れ以外」の場合、返り値が false になること', async () => {
-        const stubWeatherRepository = new StubSunnyWeatherRepository()
-        const launchRocket = new LaunchRocketImpl(stubWeatherRepository)
+    it('天気が「雨」の場合、返り値が false になること', async () => {
+        const stubRainyWeatherRepository = new StubRainyWeatherRepository()
+        const launchRocket = new LaunchRocketImpl(stubRainyWeatherRepository)
         // ⭐️Answer:
         // const stubRainyWeatherRepository = new StubRainyWeatherRepository()
         // const launchRocket = new LaunchRocketImpl(stubRainyWeatherRepository)

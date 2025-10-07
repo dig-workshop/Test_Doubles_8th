@@ -2,8 +2,11 @@ export type Rocket = {
     fire: () => void　
 }
 
+// export type LaunchRocketSystem = {
+//     launch: (rocket: Rocket, auth: Auth) => void
+// }
 export type LaunchRocketSystem = {
-    launch: (rocket: Rocket, auth: Auth) => void
+    launch: (rocket: Rocket, password: string) => void
 }
 
 export type Auth = {
