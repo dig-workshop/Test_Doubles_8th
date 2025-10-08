@@ -1,6 +1,4 @@
 import {Rocket} from './Types'
-//⭐️テスト確認のため、一旦実装を入れてみる
-// Spyの役割を果たすように書き換えてください
 export default class SpyRocket implements Rocket {
     fire_wasCalled: boolean = false
     fire(): void {
@@ -8,8 +6,7 @@ export default class SpyRocket implements Rocket {
     }
 
     disable_wasCalled: boolean = false
-    disable(): void {
+    abort(): void {
         this.disable_wasCalled = true
     }
-
 }

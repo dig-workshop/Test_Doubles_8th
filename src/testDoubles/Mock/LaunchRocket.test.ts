@@ -2,14 +2,13 @@ import {MockRocket} from './MockRocket'
 import {LaunchRocketImpl} from './LaunchRocket'
 import SpyRocket from './SpyRocket'
 
-// また仕様が変わって、発射されなかった場合にロケットを無効化するようににdisableメソッドを呼ぶことになりました。
-// そのため、発射されるテストケースでは、fireが呼ばれることに加えて、disableが呼ばれていないことも合わせてテストしたいです。
-// 発射されないテストケースも同様に、fireが呼ばれないことに加えて、disableが呼ばれていることを合わせてテストします。
-// Spyをそのように書き換えると、リファクタリングの必要があることに気づきます。
-// リファクタリングの結果、Spyにアサートが含まれることとなりましたが、それはもうすでにSpyではなくMock（自己検証するSpy）です。
+// パスワードが誤っていた場合、ロケットの発射を中止する機能（abort）が追加されました。
+// そのため、fireとabort、それぞれの呼び出し状況をテストしたいです。
+// まず、Spyでそのようにテストを書くと、リファクタリングの必要があることに気づきます。
+// リファクタリングの結果、Spyにアサートを含む事になりました。
+// 言い換えると、SpyはMock（自己検証するSpy）にリファクタリングされた事になります。
 
 describe('ロケット発射システム（LaunchRocketImpl）のテスト', () => {
-
     describe('リファクタ前', () => {
         it('正しいpasswordが設定されている場合、ロケットが発射されて、中止されない', () => {
             const spyRocket = new SpyRocket()
@@ -42,7 +41,7 @@ describe('ロケット発射システム（LaunchRocketImpl）のテスト', () 
 
             launchRocket.launch(mockRocket, validPassword)
 
-            mockRocket.verifyFire()
+            mockRocket.verifyTrigger()
         })
 
         it('不正なpasswordが設定されている場合、ロケットが発射さず、中止される', () => {
@@ -52,7 +51,7 @@ describe('ロケット発射システム（LaunchRocketImpl）のテスト', () 
 
             launchRocket.launch(mockRocket, invalidPassword)
 
-            mockRocket.verifyDisable()
+            mockRocket.verifyAbort()
         })
     })
 })

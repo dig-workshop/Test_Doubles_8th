@@ -1,6 +1,6 @@
 export type Rocket = {
     fire: () => void
-    disable: () => void
+    abort: () => void
 }
 
 export type LaunchRocketSystem = {

@@ -5,7 +5,7 @@ export default class DefaultRocket implements Rocket {
         console.log("本物のロケットが発射されたよ")
     }
 
-    disable(): void {
+    abort(): void {
         console.log("本物のロケットが発射中止されたよ")
     }
 }
