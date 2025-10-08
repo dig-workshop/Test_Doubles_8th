@@ -1,6 +1,6 @@
 import {LaunchRocketSystem, Rocket} from "./Types";
 
-export class LaunchRocketImpl implements LaunchRocketSystem {
+export class RocketLauncherImpl implements LaunchRocketSystem {
 
     launch(rocket: Rocket, password: string):void {
         if (password === 'black300') {

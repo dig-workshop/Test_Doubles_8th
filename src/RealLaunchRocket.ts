@@ -1,6 +1,6 @@
 import {Rocket, RealLaunchRocketSystem} from "./Types";
 
-export class LaunchRocketImpl implements RealLaunchRocketSystem {
+export class RocketLauncherImpl implements RealLaunchRocketSystem {
     rocket: Rocket
     password: string
 

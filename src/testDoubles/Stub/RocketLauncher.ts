@@ -1,7 +1,7 @@
 import {LaunchRocketSystem, Weather, WeatherRepository} from './Types'
 
-export class LaunchRocketImpl implements LaunchRocketSystem {
-    weatherRepository: WeatherRepository
+export class RocketLauncherImpl implements LaunchRocketSystem {
+    private weatherRepository: WeatherRepository
 
     constructor(weatherRepository: WeatherRepository) {
         this.weatherRepository = weatherRepository

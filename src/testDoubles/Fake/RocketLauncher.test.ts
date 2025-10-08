@@ -1,5 +1,5 @@
 import {SpyRocket} from './SpyRocket'
-import {LaunchRocketImpl} from './LaunchRocket'
+import {RocketLauncherImpl} from './RocketLauncher'
 import FakeAuthServer from './FakeAuthServer'
 
 // パスワード確認だけでなく、認証サーバーでのログインが必要になった場合について考えてみましょう。
@@ -12,6 +12,7 @@ import FakeAuthServer from './FakeAuthServer'
 describe('ロケット発射システムのテスト', ()=>{
     describe('Fake認証サーバーのテスト', () => {
         it('ユーザーがログイン済みの場合、ユーザー情報を返す', async () => {
+
             const fakeAuthServer = new FakeAuthServer()
             fakeAuthServer.login("someone")
 
@@ -21,6 +22,7 @@ describe('ロケット発射システムのテスト', ()=>{
         })
 
         it('ユーザーがログイン済みでない場合、undefinedを返す', async () => {
+
             const fakeAuthServer = new FakeAuthServer()
 
             const user = await fakeAuthServer.getUser("someone")
@@ -31,23 +33,25 @@ describe('ロケット発射システムのテスト', ()=>{
 
     describe('LaunchRocketImplのテスト', () => {
         it('ログイン済ユーザがロケット発射すると、ロケットが発射される', async () => {
+
             const fakeAuthServer = new FakeAuthServer()
             const spyRocket = new SpyRocket()
-            const launchRocket = new LaunchRocketImpl(spyRocket, fakeAuthServer)
-            launchRocket.login("user1")
+            const rocketLauncher = new RocketLauncherImpl(spyRocket, fakeAuthServer)
+            rocketLauncher.login("user1")
 
-            await launchRocket.launchByAuthenticatedUser("user1")
+            await rocketLauncher.launchByAuthenticatedUser("user1")
 
             expect(spyRocket.fire_wasCalled).toBeTruthy()
         })
 
         it('未ログインユーザがロケット発射すると、ロケットが発射されない', async () => {
+
             const fakeAuthServer = new FakeAuthServer()
             const spyRocket = new SpyRocket()
-            const launchRocket = new LaunchRocketImpl(spyRocket, fakeAuthServer)
-            launchRocket.login("user1")
+            const rocketLauncher = new RocketLauncherImpl(spyRocket, fakeAuthServer)
+            rocketLauncher.login("user1")
 
-            await launchRocket.launchByAuthenticatedUser("user not authorized")
+            await rocketLauncher.launchByAuthenticatedUser("user not authorized")
 
             expect(spyRocket.fire_wasCalled).not.toBeTruthy()
         })

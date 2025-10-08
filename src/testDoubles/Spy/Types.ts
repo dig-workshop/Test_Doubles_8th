@@ -1,5 +1,5 @@
 export type Rocket = {
-    fire: () => void　
+    fire: () => void
 }
 
 export type LaunchRocketSystem = {

@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import {RealRocket} from "./RealRocket";
-import {LaunchRocketImpl} from "./RealLaunchRocket";
+import {RocketLauncherImpl} from "./RealLaunchRocket";
 
 function App() {
     async function launchButtonClick() {
@@ -11,7 +11,7 @@ function App() {
         // ロケットを発射装置にセット
         const inputElement = document.getElementById("input") as HTMLInputElement
         const password = inputElement.value
-        const launchRocket = new LaunchRocketImpl(realRocket, password)
+        const launchRocket = new RocketLauncherImpl(realRocket, password)
         const launchResult = await launchRocket.launch()
 
         // ロケットが発射されたら発射ムービー

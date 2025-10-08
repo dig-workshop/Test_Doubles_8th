@@ -1,6 +1,6 @@
 import {AuthServer, LaunchRocketSystem, Rocket} from './Types'
 
-export class LaunchRocketImpl implements LaunchRocketSystem {
+export class RocketLauncherImpl implements LaunchRocketSystem {
     private rocket: Rocket
     private authServer: AuthServer
 
