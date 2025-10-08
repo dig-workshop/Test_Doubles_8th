@@ -4,11 +4,10 @@ export enum Weather {
 }
 
 export type WeatherRepository = {
-    getByCity: (city: string) => Promise<Weather>
+    getWeather: () => Weather
 }
 
 export type LaunchRocketSystem = {
     weatherRepository: WeatherRepository
-    city: string
     launch: () => Promise<boolean>
 }

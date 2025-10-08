@@ -1,38 +1,28 @@
 import {SpyRocket} from './SpyRocket'
 import {LaunchRocketImpl} from './LaunchRocket'
-// import {StubFailureAuth, StubSuccessAuth} from "./StubAuth";
+import {StubFailureAuth, StubSuccessAuth} from "./StubAuth";
 
-// Dummyでは、ロケットが発射されていないことのテストしかできませんでした。
-// 今度は、認証状態に応じてロケットが 発射されること/されないこと をどちらもテストで確認したいです。
-// Spy（今回の場合、着火ロジックが呼ばれたか・呼ばれていないか を記録するもの）を使ってテストしてみましょう。
+describe('ロケット発射システム（LaunchRocketImpl）の認証機能のテスト', () => {
 
-describe('ロケット発射システム（LaunchRocketImpl）のテスト', () => {
-
-    // まずはこのテストが通るように、SpyRocketを実装してみましょう。
-    it('正しいパスワードの場合、spyRocket.fire()が呼ばれていること', () => {
+    it('認証が通った場合、spyRocket.fire が呼ばれていること', () => {
         const launchRocket = new LaunchRocketImpl()
         const spyRocket = new SpyRocket()
-        // const stubSuccessAuth = new StubSuccessAuth()
-        const validPassword = "validPassword"
+        const stubSuccessAuth = new StubSuccessAuth()
 
 
-        // launchRocket.launch(spyRocket, stubSuccessAuth)
-        launchRocket.launch(spyRocket, validPassword)
+        launchRocket.launch(spyRocket, stubSuccessAuth)
 
 
         expect(spyRocket.fire_wasCalled).toBeTruthy()
     })
 
-    // 次に、このテストが通るように、LaunchRocket を修正してください。
-    it('間違ったパスワードの場合、spyRocket.fire()が呼ばれないこと', () => {
+    it('認証が通らなかった場合、spyRocket.fire が呼ばれないこと', () => {
         const launchRocket = new LaunchRocketImpl()
         const spyRocket = new SpyRocket()
-        // const stubFailureAuth = new StubFailureAuth()
-        const invalidPassword = "invalidPassword"
+        const stubFailureAuth = new StubFailureAuth()
 
 
-        // launchRocket.launch(spyRocket, stubFailureAuth)
-        launchRocket.launch(spyRocket, invalidPassword)
+        launchRocket.launch(spyRocket, stubFailureAuth)
 
 
         expect(spyRocket.fire_wasCalled).toBeFalsy()
