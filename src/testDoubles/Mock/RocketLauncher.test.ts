@@ -3,7 +3,7 @@ import {RocketLauncherImpl} from './RocketLauncher'
 import SpyRocket from './SpyRocket'
 import { StubFailureAuth, StubSuccessAuth } from "../Spy/StubAuth"
 
-// パスワードが誤っていた場合、ロケットの発射を中止する機能（abort）が追加されました。
+// 認証が通らなかった場合、ロケットの発射を中止する機能（abort）が追加されました。
 // そのため、fireとabort、それぞれの呼び出し状況をテストしたいです。
 // まず、Spyでそのようにテストを書くと、リファクタリングの必要があることに気づきます。
 // リファクタリングの結果、Spyにアサートを含む事になりました。
@@ -11,7 +11,7 @@ import { StubFailureAuth, StubSuccessAuth } from "../Spy/StubAuth"
 
 describe('ロケット発射システム（RocketLauncherImpl）のテスト', () => {
     describe('リファクタ前', () => {
-        it('正しいpasswordを設定した場合、ロケットが発射されて、中止されない', () => {
+        it('認証が通った場合、ロケットが発射されて、中止されない', () => {
             const spyRocket = new SpyRocket()
             const stubSuccessAuth = new StubSuccessAuth()
             const rocketLauncher = new RocketLauncherImpl()
@@ -22,7 +22,7 @@ describe('ロケット発射システム（RocketLauncherImpl）のテスト', (
             expect(spyRocket.disable_wasCalled).not.toBeTruthy()
         })
 
-        it('不正なpasswordを設定した場合、ロケットが発射さず、中止される', () => {
+        it('認証が通らなかった場合、ロケットが発射れず、中止される', () => {
             const spyRocket = new SpyRocket()
             const stubFailureAuth = new StubFailureAuth()
             const rocketLauncher = new RocketLauncherImpl()
@@ -35,7 +35,7 @@ describe('ロケット発射システム（RocketLauncherImpl）のテスト', (
     })
 
     describe('リファクタ後', () => {
-        it('正しいpasswordを設定した場合、ロケットが発射されて、中止されない', () => {
+        it('認証が通った場合、ロケットが発射されて、中止されない', () => {
             const mockRocket = new MockRocket()
             const stubSuccessAuth = new StubSuccessAuth()
             const rocketLauncher = new RocketLauncherImpl()
@@ -45,7 +45,7 @@ describe('ロケット発射システム（RocketLauncherImpl）のテスト', (
             mockRocket.verifyTrigger()
         })
 
-        it('不正なpasswordを設定した場合、ロケットが発射さず、中止される', () => {
+        it('認証が通らなかった場合、ロケットが発射さず、中止される', () => {
             const mockRocket = new MockRocket()
             const stubFailureAuth = new StubFailureAuth()
             const rocketLauncher = new RocketLauncherImpl()

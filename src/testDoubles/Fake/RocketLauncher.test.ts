@@ -2,7 +2,7 @@ import {SpyRocket} from './SpyRocket'
 import {RocketLauncherImpl} from './RocketLauncher'
 import FakeAuthServer from './FakeAuthServer'
 
-// パスワード確認だけでなく、認証サーバーでのログインが必要になった場合について考えてみましょう。
+// 認証サーバーでのログインが必要になった場合について考えてみましょう。
 // 認証サーバーを使うには、会社のセキュリティー部門との打合せや、手続き等、L/Tが長くなりがちです。
 // このままでは、それがブロッカーとなりプロジェクトが進みません。
 // そこで、Fakeを使って、認証サーバー以外の部分を進めていきましょう。
