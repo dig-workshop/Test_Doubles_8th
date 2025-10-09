@@ -1,11 +1,11 @@
-import {LaunchRocketSystem, Rocket} from "./Types";
+import { Auth, LaunchRocketSystem, Rocket } from "./Types";
 
 export class RocketLauncherImpl implements LaunchRocketSystem {
 
-    launch(rocket: Rocket, password: string):void {
-        if (password === 'black300') {
+    launch(rocket: Rocket, auth: Auth):void {
+        if (auth.authenticate("validPassword")) {
             rocket.fire()
-        } else {
+        }else {
             rocket.abort()
         }
     }

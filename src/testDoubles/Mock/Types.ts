@@ -4,5 +4,9 @@ export type Rocket = {
 }
 
 export type LaunchRocketSystem = {
-    launch: (rocket: Rocket, password: string) => void
+    launch: (rocket: Rocket, auth: Auth) => void
+}
+
+export type Auth = {
+    authenticate: (password: string) => boolean
 }

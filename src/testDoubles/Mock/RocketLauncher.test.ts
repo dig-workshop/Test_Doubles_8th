@@ -1,6 +1,7 @@
 import {MockRocket} from './MockRocket'
 import {RocketLauncherImpl} from './RocketLauncher'
 import SpyRocket from './SpyRocket'
+import { StubFailureAuth, StubSuccessAuth } from "../Spy/StubAuth"
 
 // パスワードが誤っていた場合、ロケットの発射を中止する機能（abort）が追加されました。
 // そのため、fireとabort、それぞれの呼び出し状況をテストしたいです。
@@ -12,10 +13,10 @@ describe('ロケット発射システム（RocketLauncherImpl）のテスト', (
     describe('リファクタ前', () => {
         it('正しいpasswordを設定した場合、ロケットが発射されて、中止されない', () => {
             const spyRocket = new SpyRocket()
-            const validPassword = 'black300'
+            const stubSuccessAuth = new StubSuccessAuth()
             const rocketLauncher = new RocketLauncherImpl()
 
-            rocketLauncher.launch(spyRocket, validPassword)
+            rocketLauncher.launch(spyRocket, stubSuccessAuth)
 
             expect(spyRocket.fire_wasCalled).toBeTruthy()
             expect(spyRocket.disable_wasCalled).not.toBeTruthy()
@@ -23,10 +24,10 @@ describe('ロケット発射システム（RocketLauncherImpl）のテスト', (
 
         it('不正なpasswordを設定した場合、ロケットが発射さず、中止される', () => {
             const spyRocket = new SpyRocket()
-            const invalidPassword = 'white200'
+            const stubFailureAuth = new StubFailureAuth()
             const rocketLauncher = new RocketLauncherImpl()
 
-            rocketLauncher.launch(spyRocket, invalidPassword)
+            rocketLauncher.launch(spyRocket, stubFailureAuth)
 
             expect(spyRocket.fire_wasCalled).not.toBeTruthy()
             expect(spyRocket.disable_wasCalled).toBeTruthy()
@@ -36,20 +37,20 @@ describe('ロケット発射システム（RocketLauncherImpl）のテスト', (
     describe('リファクタ後', () => {
         it('正しいpasswordを設定した場合、ロケットが発射されて、中止されない', () => {
             const mockRocket = new MockRocket()
-            const validPassword = 'black300'
+            const stubSuccessAuth = new StubSuccessAuth()
             const rocketLauncher = new RocketLauncherImpl()
 
-            rocketLauncher.launch(mockRocket, validPassword)
+            rocketLauncher.launch(mockRocket, stubSuccessAuth)
 
             mockRocket.verifyTrigger()
         })
 
         it('不正なpasswordを設定した場合、ロケットが発射さず、中止される', () => {
             const mockRocket = new MockRocket()
-            const invalidPassword = 'white200'
+            const stubFailureAuth = new StubFailureAuth()
             const rocketLauncher = new RocketLauncherImpl()
 
-            rocketLauncher.launch(mockRocket, invalidPassword)
+            rocketLauncher.launch(mockRocket, stubFailureAuth)
 
             mockRocket.verifyAbort()
         })
