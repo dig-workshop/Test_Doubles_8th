@@ -3,7 +3,7 @@ export type Rocket = {
 }
 
 export type Auth = {
-    authenticate: (password: string) => boolean
+    authenticate: () => boolean
 }
 
 export type LaunchRocketSystem = {

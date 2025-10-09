@@ -8,5 +8,5 @@ export type LaunchRocketSystem = {
 }
 
 export type Auth = {
-    authenticate: (password: string) => boolean
+    authenticate: () => boolean
 }

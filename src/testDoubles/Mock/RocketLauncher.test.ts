@@ -19,7 +19,7 @@ describe('ロケット発射システム（RocketLauncherImpl）のテスト', (
             rocketLauncher.launch(spyRocket, stubSuccessAuth)
 
             expect(spyRocket.fire_wasCalled).toBeTruthy()
-            expect(spyRocket.disable_wasCalled).not.toBeTruthy()
+            expect(spyRocket.disable_wasCalled).toBeFalsy()
         })
 
         it('認証が通らなかった場合、ロケットが発射れず、中止される', () => {
@@ -29,7 +29,7 @@ describe('ロケット発射システム（RocketLauncherImpl）のテスト', (
 
             rocketLauncher.launch(spyRocket, stubFailureAuth)
 
-            expect(spyRocket.fire_wasCalled).not.toBeTruthy()
+            expect(spyRocket.fire_wasCalled).toBeFalsy()
             expect(spyRocket.disable_wasCalled).toBeTruthy()
         })
     })

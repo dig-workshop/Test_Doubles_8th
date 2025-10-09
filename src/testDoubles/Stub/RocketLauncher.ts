@@ -1,13 +1,10 @@
 import {LaunchRocketSystem, Weather, WeatherRepository} from './Types'
 
 export class RocketLauncherImpl implements LaunchRocketSystem {
-    private weatherRepository: WeatherRepository
-
-    constructor(weatherRepository: WeatherRepository) {
-        this.weatherRepository = weatherRepository
-    }
+    constructor(private weatherRepository: WeatherRepository) {}
 
     async launch(): Promise<boolean> {
+        // ⭐️ここを実装
         const weather = this.weatherRepository.getWeather()
         return weather === Weather.SUNNY
     }
