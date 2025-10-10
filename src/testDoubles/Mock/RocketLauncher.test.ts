@@ -10,7 +10,7 @@ import { StubFailureAuth, StubSuccessAuth } from "../Spy/StubAuth"
 // 言い換えると、SpyはMock（自己検証するSpy）にリファクタリングされた事になります。
 
 describe('ロケット発射システム（RocketLauncherImpl）のテスト', () => {
-    describe('リファクタ前', () => {
+    describe('リファクタリング前', () => {
         it('認証が通った場合、ロケットが発射されて、中止されない', () => {
             const spyRocket = new SpyRocket()
             const stubSuccessAuth = new StubSuccessAuth()
@@ -34,7 +34,7 @@ describe('ロケット発射システム（RocketLauncherImpl）のテスト', (
         })
     })
 
-    describe('リファクタ後', () => {
+    describe('リファクタリング後', () => {
         it('認証が通った場合、ロケットが発射されて、中止されない', () => {
             const mockRocket = new MockRocket()
             const stubSuccessAuth = new StubSuccessAuth()

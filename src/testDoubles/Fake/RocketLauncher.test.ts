@@ -14,9 +14,9 @@ describe('ロケット発射システムのテスト', ()=>{
         it('ユーザーがログイン済みの場合、ユーザー情報を返す', async () => {
 
             const fakeAuthServer = new FakeAuthServer()
-            fakeAuthServer.login("someone")
+            fakeAuthServer.login("user001")
 
-            const user = await fakeAuthServer.getUser("someone")
+            const user = await fakeAuthServer.getUser("user001")
 
             expect(user).toEqual({name: "user name", email: "example@mail.com"})
         })
@@ -25,7 +25,7 @@ describe('ロケット発射システムのテスト', ()=>{
 
             const fakeAuthServer = new FakeAuthServer()
 
-            const user = await fakeAuthServer.getUser("someone")
+            const user = await fakeAuthServer.getUser("user001")
 
             expect(user).toBeUndefined()
         })
@@ -37,9 +37,9 @@ describe('ロケット発射システムのテスト', ()=>{
             const fakeAuthServer = new FakeAuthServer()
             const spyRocket = new SpyRocket()
             const rocketLauncher = new RocketLauncherImpl(spyRocket, fakeAuthServer)
-            rocketLauncher.login("user1")
+            rocketLauncher.login("user001")
 
-            await rocketLauncher.launchByAuthenticatedUser("user1")
+            await rocketLauncher.launchByAuthenticatedUser("user001")
 
             expect(spyRocket.fire_wasCalled).toBeTruthy()
         })
@@ -49,9 +49,9 @@ describe('ロケット発射システムのテスト', ()=>{
             const fakeAuthServer = new FakeAuthServer()
             const spyRocket = new SpyRocket()
             const rocketLauncher = new RocketLauncherImpl(spyRocket, fakeAuthServer)
-            rocketLauncher.login("user1")
+            rocketLauncher.login("user001")
 
-            await rocketLauncher.launchByAuthenticatedUser("user not authorized")
+            await rocketLauncher.launchByAuthenticatedUser("userXXX")
 
             expect(spyRocket.fire_wasCalled).not.toBeTruthy()
         })

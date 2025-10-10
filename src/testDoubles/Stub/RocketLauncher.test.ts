@@ -3,7 +3,7 @@ import {StubRainyWeatherRepository, StubSunnyWeatherRepository} from "./StubWeat
 
 describe('RocketLauncherImpl（ロケット発射装置）のテスト', () => {
 
-    it('天気が「晴れ」の場合、打ち上げを実行した返り値が true になること', async () => {
+    it('天気が「晴れ」の場合、打ち上げを実行すること', async () => {
         const stubSunnyWeatherRepository = new StubSunnyWeatherRepository()
         const rocketLauncher = new RocketLauncherImpl(stubSunnyWeatherRepository)
 
