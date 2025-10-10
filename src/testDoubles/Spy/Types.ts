@@ -1,3 +1,4 @@
+// このデータ型は変更しないでください
 export type Rocket = {
     fire: () => void
 }
