@@ -1,4 +1,4 @@
-// このデータ型は変更しないでください
+// ※このデータ型は変更しないでください
 export enum Weather {
     SUNNY,
     RAINY,
@@ -9,5 +9,5 @@ export type WeatherRepository = {
 }
 
 export type LaunchRocketSystem = {
-    launch: () => Promise<boolean>
+    launch: () => boolean
 }

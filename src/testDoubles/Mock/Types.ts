@@ -1,4 +1,4 @@
-// このデータ型は変更しないでください
+// ※このデータ型は変更しないでください
 export type Rocket = {
     fire: () => void
     abort: () => void
