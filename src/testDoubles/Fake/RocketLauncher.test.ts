@@ -4,14 +4,14 @@ import {RocketLauncherImpl} from './RocketLauncher'
 import FakeAuthServer from './FakeAuthServer'
 
 // 認証サーバーでのログインが必要になった場合について考えてみましょう。
-// 認証サーバーを使うには、会社のセキュリティー部門との打合せや、手続き等、L/Tが長くなりがちです。
+// 認証サーバーを使うには、会社のセキュリティー部門との打合せや、手続き等、リードタイムが長くなりがちです。
 // このままでは、それがブロッカーとなりプロジェクトが進みません。
-// そこで、Fakeを使って、認証サーバー以外の部分を進めていきましょう。
-// Fake認証サーバーでは、ユーザーIDを渡すと、認証済ならユーザー情報を、未認証ならundefinedを返します。
-// ただし、Fakeにはロジックが含まれるため、Fakeに対してのテストも必要となります。
+// そこで、Fake の役割をするフェイク認証サーバーを使って、認証サーバー以外の部分を進めていきましょう。
+// フェイク認証サーバーでは、ユーザーIDを渡すと認証済なら ユーザー情報 を、未認証なら undefined を返します。
+// ただし、Fake にはロジックが含まれるため、Fake に対してのテストも必要となります。
 
 describe('ロケット発射システムのテスト', ()=>{
-    describe('Fake認証サーバーのテスト', () => {
+    describe('フェイク認証サーバーのテスト', () => {
         it('ユーザーがログイン済みの場合、ユーザー情報を返す', async () => {
 
             const fakeAuthServer = new FakeAuthServer()
@@ -32,7 +32,7 @@ describe('ロケット発射システムのテスト', ()=>{
         })
     })
 
-    describe('LaunchRocketImplのテスト', () => {
+    describe('RocketLauncherImpl のテスト', () => {
         it('ログイン済ユーザがロケット発射すると、ロケットが発射される', async () => {
 
             const fakeAuthServer = new FakeAuthServer()

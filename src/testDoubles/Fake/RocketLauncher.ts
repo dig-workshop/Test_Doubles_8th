@@ -14,10 +14,7 @@ export class RocketLauncherImpl implements LaunchRocketSystem {
     }
 
     async launchByAuthenticatedUser(userId: string) {
-        // ⭐️ここを実装
-        const user = await this.authServer.getUser(userId)
-        if (user) {
-            this.rocket.fire()
-        }
+        // テストが通るように修正してください
+        this.rocket.fire()
     }
 }

@@ -3,25 +3,19 @@ import {Rocket} from "./Types";
 export class MockRocket implements Rocket {
     private fire_wasCalled = false
     fire(): void {
-        // ⭐️ここを実装
-        this.fire_wasCalled = true
+        // リファクタリング後のテストが通るように実装してください
     }
 
-    private disable_wasCalled = false
+    private abort_wasCalled = false
     abort(): void {
-        // ⭐️ここを実装
-        this.disable_wasCalled = true
+        // リファクタリング後のテストが通るように実装してください
     }
 
     verifyTrigger() {
-        // ⭐️ここを実装
-        expect(this.fire_wasCalled).toBeTruthy()
-        expect(this.disable_wasCalled).toBeFalsy()
+        // リファクタリング後のテストが通るように実装してください
     }
 
     verifyAbort() {
-        // ⭐️ここを実装
-        expect(this.fire_wasCalled).toBeFalsy()
-        expect(this.disable_wasCalled).toBeTruthy()
+        // リファクタリング後のテストが通るように実装してください
     }
 }
