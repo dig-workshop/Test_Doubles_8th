@@ -1,23 +1,31 @@
 import React from 'react';
 import './App.css';
 import {RealRocket} from "./RealRocket";
-import {RocketLauncherImpl} from "./RealLaunchRocket";
+import {RocketLauncherImpl} from "./RealRocketLauncher";
 
 function App() {
     async function launchButtonClick() {
         // 本物のロケットの準備
         const realRocket = new RealRocket()
 
-        // ロケットを発射装置にセット
+        // 外部APIで今日の天気を取得
+        const weather = await fetch("https://weather.tsukumijima.net/api/forecast/city/230010")
+            .then((response) => response.json()).then((user) => {
+                console.log(user.forecasts[0].telop)
+                return user.forecasts[0].telop
+            })
+
+        // ロケット発射装置に天気の情報をインプット
+        const rocketLauncher = new RocketLauncherImpl(weather)
+
+        // 入力されたパスワードを発射メソッドにインプット
         const inputElement = document.getElementById("input") as HTMLInputElement
         const password = inputElement.value
-        const launchRocket = new RocketLauncherImpl(realRocket, password)
-        const launchResult = await launchRocket.launch()
+        const launchResult = rocketLauncher.launch(realRocket, password)
 
-        // ロケットが発射されたら発射ムービー
+        // 入力されたパスワードによって動画を切り替えて表示
         if (launchResult === "ロケットを発射しました") {
             const rocketVideo = document.getElementById("rocketR18") as HTMLIFrameElement
-            // const rocketVideo = document.getElementById("rocketR6") as HTMLIFrameElement
             rocketVideo.src += '?autoplay=1';
             rocketVideo.hidden = false
             const buttonElement = document.getElementById("button") as HTMLAnchorElement
@@ -52,7 +60,7 @@ function App() {
                     id="rocketR18"
                     width="560"
                     height="315"
-                    src="https://www.youtube.com/embed/dBj3l7lXd7w"
+                    src="https://www.youtube.com/embed/TMR3lHOnKwM"
                     title="YouTube video player" frameBorder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     allowFullScreen
