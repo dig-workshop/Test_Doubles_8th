@@ -1,3 +1,4 @@
+// ※このテストの内容は変更しないでください
 import {SpyRocket} from './SpyRocket'
 import {RocketLauncherImpl} from './RocketLauncher'
 import FakeAuthServer from './FakeAuthServer'

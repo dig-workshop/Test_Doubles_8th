@@ -1,3 +1,4 @@
+// ※このテストの内容は変更しないでください
 import {MockRocket} from './MockRocket'
 import {RocketLauncherImpl} from './RocketLauncher'
 import SpyRocket from './SpyRocket'
