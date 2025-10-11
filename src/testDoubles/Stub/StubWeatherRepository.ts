@@ -1,9 +1,9 @@
 import {Weather, WeatherRepository} from './Types'
 
 export class StubSunnyWeatherRepository implements WeatherRepository {
-    // 「晴れ」の状態をスタブできるように実装してください。
+    // 「晴れ」の状態を Stub できるように実装してください。
 }
 
 export class StubRainyWeatherRepository implements WeatherRepository {
-    // 「雨」の状態をスタブできるように実装してください。
+    // 「雨」の状態を Stub できるように実装してください。
 }

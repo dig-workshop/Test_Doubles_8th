@@ -4,13 +4,13 @@ import {StubRainyWeatherRepository, StubSunnyWeatherRepository} from "./StubWeat
 
 // rocketLauncher は天気APIに依存しており、その返り値によって挙動が変わります。
 // このままでは本物のAPIを叩いてしまうので、レスポンスで時間がかかったり、安定したテストができません。
-// そこで、WeatherRepository の スタブ（天気の返り値を固定するもの）を使って、テストできるようにしましょう。
+// そこで、WeatherRepository の Stub（天気の返り値を固定するもの）を使って、テストできるようにしましょう。
 
 describe('RocketLauncherImpl（ロケット発射装置）のテスト', () => {
 
-    // stubSunnyWeatherRepositoryはまだ何も実装されていないので、「晴れ」の状態を スタブ できていません。
+    // stubSunnyWeatherRepositoryはまだ何も実装されていないので、「晴れ」の状態を Stub できていません。
     // まずはこの「晴れ」の時のテストが通るように、stubSunnyWeatherRepository を実装し、
-    // 正しく スタブ ができたら、rocketLauncher の実装を修正しましょう。
+    // 正しく Stub ができたら、rocketLauncher の実装を修正しましょう。
 
     it('天気が「晴れ」の場合、打ち上げを実行すること', async () => {
         const stubSunnyWeatherRepository = new StubSunnyWeatherRepository()
@@ -23,7 +23,7 @@ describe('RocketLauncherImpl（ロケット発射装置）のテスト', () => {
 
 
     // 今度は「雨」の時のテストをするために、stubRainyWeatherRepository を実装し、
-    // 正しいスタブができたら、どちらのテストも通るように、rocketLauncher を再度修正しましょう。
+    // 正しい Stub ができたら、どちらのテストも通るように、rocketLauncher を再度修正しましょう。
 
     it('天気が「雨」の場合、打ち上げを中止すること', async () => {
         const stubRainyWeatherRepository = new StubRainyWeatherRepository()
