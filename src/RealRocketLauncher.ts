@@ -8,7 +8,7 @@ export class RocketLauncherImpl implements RealRocketLauncherSystem {
         // パスワードが間違っていたらロケットが「自爆」
         if (password !== "validPassword") return rocket.selfDestruction()
 
-        // パスワードが合っていても雨なら「中止」、雨以外の天気ならロケットを「発射」
+        // パスワードが合っていても天気が"雨"なら「中止」、"雨以外"ならロケットを「発射」
         if (this.weather === "雨") {
             return "ロケットを発射できません"
         } else {

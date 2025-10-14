@@ -3,6 +3,6 @@ import {Rocket} from "./Types";
 export class SpyRocket implements Rocket {
     fire_wasCalled = false
     fire() {
-        // fireメソッドの Spy ができるように実装してください
+        // Spy の役割を果たすように実装してください
     }
 }

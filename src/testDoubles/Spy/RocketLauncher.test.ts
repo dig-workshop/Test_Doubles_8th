@@ -1,11 +1,6 @@
-// ※このテストの内容は変更しないでください
 import {SpyRocket} from './SpyRocket'
 import {RocketLauncherImpl} from './RocketLauncher'
 import {StubFailureAuth, StubSuccessAuth} from "./StubAuth";
-
-// Dummy では、ロケットが発射されていないことのテストしかできませんでした。
-// 今度は、認証状態に応じてロケットが 発射されること/されないこと をどちらもテストで確認したいです。
-// Spy（ロケットの点火ロジックが 呼ばれたか・呼ばれていないか を記録するもの）を使ってテストしてみましょう。
 
 describe('ロケット発射システム（RocketLauncherImpl）の認証機能のテスト', () => {
 

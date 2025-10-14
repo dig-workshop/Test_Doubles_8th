@@ -1,16 +1,10 @@
-// ※このテストの内容は変更しないでください
 import {SpyRocket} from './SpyRocket'
 import {RocketLauncherImpl} from './RocketLauncher'
 import FakeAuthServer from './FakeAuthServer'
 
-// 認証サーバーでのログインが必要になった場合について考えてみましょう。
-// 認証サーバーを使うには、会社のセキュリティー部門との打合せや、手続き等、リードタイムが長くなりがちです。
-// このままでは、それがブロッカーとなりプロジェクトが進みません。
-// そこで、Fake の役割をするフェイク認証サーバーを使って、認証サーバー以外の部分を進めていきましょう。
-// フェイク認証サーバーでは、ユーザーIDを渡すと認証済なら ユーザー情報 を、未認証なら undefined を返します。
-// ただし、Fake にはロジックが含まれるため、Fake に対してのテストも必要となります。
-
 describe('ロケット発射システムのテスト', ()=>{
+
+    // まずは FakeAuthServer を実装して、このテストが通るようにしましょう。
     describe('フェイク認証サーバーのテスト', () => {
         it('ユーザーがログイン済みの場合、ユーザー情報を返す', async () => {
 
@@ -32,6 +26,7 @@ describe('ロケット発射システムのテスト', ()=>{
         })
     })
 
+    // FakeAuthServer を正しく実装できたら、 RocketLauncherImpl を実装して、このテストが通るようにしましょう。
     describe('RocketLauncherImpl のテスト', () => {
         it('ログイン済ユーザがロケット発射すると、ロケットが発射される', async () => {
 
