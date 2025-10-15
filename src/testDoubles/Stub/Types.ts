@@ -5,7 +5,7 @@ export enum Weather {
 }
 
 export type WeatherRepository = {
-    getWeather: () => Weather
+    getWeather: () => Promise<Weather>
 }
 
 export type LaunchRocketSystem = {
