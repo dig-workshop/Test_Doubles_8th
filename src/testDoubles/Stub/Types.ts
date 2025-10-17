@@ -9,5 +9,5 @@ export type WeatherRepository = {
 }
 
 export type LaunchRocketSystem = {
-    launch: () => boolean
+    launch: () => Promise<boolean>
 }

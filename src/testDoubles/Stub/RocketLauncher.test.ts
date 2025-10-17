@@ -10,7 +10,7 @@ describe('RocketLauncherImpl（ロケット発射装置）のテスト', () => {
         const stubSunnyWeatherRepository = new StubSunnyWeatherRepository()
         const rocketLauncher = new RocketLauncherImpl(stubSunnyWeatherRepository)
 
-        const result = rocketLauncher.launch()
+        const result = await rocketLauncher.launch()
 
         expect(result).toBeTruthy()
     })
@@ -21,7 +21,7 @@ describe('RocketLauncherImpl（ロケット発射装置）のテスト', () => {
         const stubRainyWeatherRepository = new StubRainyWeatherRepository()
         const rocketLauncher = new RocketLauncherImpl(stubRainyWeatherRepository)
 
-        const result = rocketLauncher.launch()
+        const result = await rocketLauncher.launch()
 
         expect(result).toBeFalsy()
     })
